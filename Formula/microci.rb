@@ -1,8 +1,8 @@
 class Microci < Formula
   desc "Minimalist continuous integration tool"
   homepage "https://microci.dev"
-  url "https://github.com/geraldolsribeiro/microCI/archive/refs/tags/v0.40.0.tar.gz"
-  sha256 "3c5b636bca41ce619e95f86de8d05b7c16b642df757af6ba0eb79fb12b65c76b"
+  url "https://github.com/geraldolsribeiro/microCI/archive/refs/tags/v0.40.1.tar.gz"
+  #sha256 "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
   license "MIT"
   head "https://github.com/geraldolsribeiro/microci.git", branch: "master"
 
@@ -12,8 +12,8 @@ class Microci < Formula
 
   def install
     system "make", "-C", "src", "CXXFLAGS=-std=c++17 -DFMT_HEADER_ONLY -DSPDLOG_FMT_EXTERNAL=1 -I/opt/homebrew/Cellar/inja/3.4.0/include/inja -I../include/"
-    mkdir bin
-    cp "bin/microCI #{bin}/microCI"
+    bin.mkpath
+    bin.install "bin/microCI"
   end
 
   test do
